@@ -1,0 +1,55 @@
+{% include "cdnlines.html" %}
+{% load static %}
+<html>
+<head>
+    {% block content %}
+
+    {% endblock %}
+    <style>
+        th{
+            text-align: center;
+            color: black;
+            background: cornflowerblue;
+
+        }
+        td {
+            text-align: center;
+            color: black;
+            background: cornflowerblue;
+        }
+    </style>
+</head>
+<body style="background: black" >
+        <h1 style="text-align: center; color: blue">Covid19 Hospitals & Beds Information</h1><a href="{% url 'covid' %}" class="btn btn-primary">Home Page</a>
+<table class="table table-dark table-striped table-bordered">
+  <thead>
+    <tr>
+
+            <th scope="col">State</th>
+            <th scope="col">RuralHospitals</th>
+            <th scope="col">RuralBeds</th>
+            <th scope="col">UrbanHospitals</th>
+            <th scope="col">UrbanBeds</th>
+            <th scope="col">TotalBeds</th>
+            <th scope="col">TotalHospitals</th>
+
+    </tr>
+  </thead>
+  <tbody>
+   {% for x  in  information.data.regional %}
+    <tr>
+
+      <td>{{ x.state }}</td>
+      <td>{{ x.ruralHospitals }}</td>
+      <td>{{ x.ruralBeds }}</td>
+      <td>{{ x.urbanHospitals }}</td>
+      <td>{{ x.urbanBeds }}</td>
+      <td>{{ x.totalBeds }}</td>
+      <td>{{ x.totalHospitals }}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</body>
+</html>
